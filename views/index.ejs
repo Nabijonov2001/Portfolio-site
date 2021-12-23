@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+
+  <title>Reflux HTML CSS Template</title>
+  <!--
+Reflux Template
+https://templatemo.com/tm-531-reflux
+-->
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+  <link rel="stylesheet" href="assets/css/owl.css" />
+  <link rel="stylesheet" href="assets/css/lightbox.css" />
+</head>
+
+<body>
+  <div id="page-wraper">
+    <!-- Sidebar Menu -->
+    <div class="responsive-nav">
+      <i class="fa fa-bars" id="menu-toggle"></i>
+      <div id="menu" class="menu">
+        <i class="fa fa-times" id="menu-close"></i>
+        <div class="container">
+          <div class="image">
+            <a href="/"><img src="assets/images/<%= developer.my_image %> " alt="" /></a>
+          </div>
+          <div class="author-content">
+            <h4>
+              <%= developer.fullname %>
+            </h4>
+            <span>
+              <%= developer.job %>
+            </span>
+          </div>
+          <nav class="main-nav" role="navigation">
+            <ul class="main-menu">
+              <li><a href="#section1">Men haqimda</a></li>
+              <li><a href="#section2">Texnologiyalar</a></li>
+              <li><a href="#section3">Ishlarim</a></li>
+              <li><a href="#section4">Men bilan aloqa</a></li>
+            </ul>
+          </nav>
+          <div class="social-network">
+            <ul class="soial-icons fs-2">
+              <li>
+                <a href="<%= contact.telegram %> "> <h3><i class="bi bi-telegram"></h3></i></a>
+              </li>
+              <li>
+                <a href="<%= contact.github %> "><h3><i class="bi bi-github"></i></h3></a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-text">
+            <p>Sang Web Academy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section about-me" data-section="section1">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Men haqimda</h2>
+          <div class="line-dec"></div>
+          <span>
+            <%= developer.about_me %>
+          </span>
+        </div>
+        <% posts.forEach((post, index)=> { %>
+          <% if (index%2==0) { %>
+            <div style="margin-bottom: 1cm;" class="left-image-post">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="left-image">
+                    <img src="assets/post_images/<%= post.post_image %> " alt="" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="right-text">
+                    <h4>
+                      <%= post.title %>
+                    </h4>
+                    <p>
+                      <%= post.snippet %>
+                    </p>
+                    <div class="white-button">
+                      <a href="#">Read More</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% return %>
+              <% } %>
+
+                <div style="margin-bottom: 1cm;" class="right-image-post">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="left-text">
+                        <h4>
+                          <%= post.title %>
+                        </h4>
+                        <p>
+                          <%= post.snippet %>
+                        </p>
+                        <div class="white-button">
+                          <a href="#">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="right-image">
+                        <img src="assets/post_images/<%= post.post_image%> " alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% }) %>
+
+      </div>
+    </section>
+
+    <section class="section my-services" data-section="section2">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Texnologiyalar</h2>
+          <div class="line-dec"></div>
+          <span>Quydagi texnologiyalarni bilaman.</span>
+        </div>
+        <div class="row">
+          <% skills.forEach(skill=> { %>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="second-service-icon service-icon"></div>
+                <h4>
+                  <%= skill.skill_name %>
+                </h4>
+              </div>
+            </div>
+            <% }) %>
+
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section my-work" data-section="section3">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Mening ishlarim</h2>
+          <div class="line-dec"></div>
+          <span>Men qilgan proyektlar va loyhalar.</span>
+        </div>
+        <div class="row">
+          <% projects.forEach((project, index)=> { %>
+            <div class="col-sm-6">
+              <div class="card mb-2">
+                <div class="card-header text-dark">Project <%= index +1 %>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-dark">
+                    <%= project.project_name %>
+                  </h5>
+                  <p class="card-text text-secondary">
+                    <%= project.about %>
+                  </p>
+                  <a href="<%= project.link %> " class="btn btn-primary">Githubdan ko'rish</a>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+        </div>
+    </section>
+
+    <section class="section contact-me" data-section="section4">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Men bilan aloqa</h2>
+          <div class="line-dec"></div>
+          <span>Quyda o`z aklif va mulohazalaringizni qoldirishingiz mumkin</span>
+        </div>
+        <!--Section: Contact v.2-->
+        <section class="mb-4">
+
+          <div class="row">
+            <div class="col-md-9 mb-md-0 mb-5">
+              <form id="contact-form" name="contact-form" action="/" method="POST">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="name" name="name" placeholder="Your name" required class="form-control text-light bg bg-dark">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="email" name="email" placeholder="Your email" required class="form-control text-light bg bg-dark">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="md-form">
+                      <textarea type="text" id="message" name="message" placeholder="Your message" rows="5" required
+                        class="form-control md-textarea mt-3 mb-3 text-light bg bg-dark"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-primary">Send</button>
+              </form>
+            </div>
+            <div class="col-md-3 text-center">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <i class="bi bi-geo-alt-fill"></i>
+                  <p><%= contact.address %></p>
+                </li>
+
+                <li class="m-2">
+                  <i class="bi bi-telephone-fill"></i>
+                  <p><%= contact.phone_number %> </p>
+                </li>
+
+                <li>
+                  <i class="bi bi-envelope-fill"></i>
+                  <p><%= contact.email %></p>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+        </section>
+        <!--Section: Contact v.2-->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/lightbox.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script>
+    //according to loftblog tut
+    $(".main-menu li:first").addClass("active");
+
+    var showSection = function showSection(section, isAnimate) {
+      var direction = section.replace(/#/, ""),
+        reqSection = $(".section").filter(
+          '[data-section="' + direction + '"]'
+        ),
+        reqSectionPos = reqSection.offset().top - 0;
+
+      if (isAnimate) {
+        $("body, html").animate(
+          {
+            scrollTop: reqSectionPos
+          },
+          800
+        );
+      } else {
+        $("body, html").scrollTop(reqSectionPos);
+      }
+    };
+
+    var checkSection = function checkSection() {
+      $(".section").each(function () {
+        var $this = $(this),
+          topEdge = $this.offset().top - 80,
+          bottomEdge = topEdge + $this.height(),
+          wScroll = $(window).scrollTop();
+        if (topEdge < wScroll && bottomEdge > wScroll) {
+          var currentId = $this.data("section"),
+            reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+          reqLink
+            .closest("li")
+            .addClass("active")
+            .siblings()
+            .removeClass("active");
+        }
+      });
+    };
+
+    $(".main-menu").on("click", "a", function (e) {
+      e.preventDefault();
+      showSection($(this).attr("href"), true);
+    });
+
+    $(window).scroll(function () {
+      checkSection();
+    });
+  </script>
+</body>
+
+</html>
